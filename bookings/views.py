@@ -26,3 +26,9 @@ class LSAProfileSearchView(generics.ListAPIView):
 
         return queryset
 
+from .serializers import BookingCreateSerializer
+
+class BookingCreateView(generics.CreateAPIView):
+    serializer_class = BookingCreateSerializer
+    # status field defaults to 'pending' as defined in the model, and it's read-only in serializer.
+
