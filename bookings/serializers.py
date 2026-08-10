@@ -56,3 +56,9 @@ class BookingCreateSerializer(serializers.ModelSerializer):
             )
 
         return data
+
+class WebhookSerializer(serializers.Serializer):
+    event_type = serializers.ChoiceField(choices=['payment.success', 'payment.failed'])
+    provider_reference = serializers.CharField()
+    booking_id = serializers.IntegerField()
+    amount = serializers.DecimalField(max_digits=10, decimal_places=2)
